@@ -1,0 +1,41 @@
+[package]
+name = "luminet_blackhole"
+version = "0.1.0"
+license = "MIT"
+authors = ["Nick Hughes <nickjhughes@gmail.com>"]
+repository = "https://github.com/nickjhughes/luminet_blackhole"
+edition = "2021"
+
+[lib]
+name = "luminet_blackhole_lib"
+path = "src/lib/lib.rs"
+
+[[bin]]
+name = "luminet_blackhole"
+path = "src/bin.rs"
+
+[dependencies]
+approx = "0.5"
+cgmath = "0.18"
+clap = { version = "4.5", features = ["derive"] }
+image = { version = "0.25", default-features = false, features = [
+    "rayon",
+    "png",
+] }
+indicatif = { version = "0.17", features = ["rayon"] }
+plotters = "0.3"
+rand = "0.8"
+rayon = "1.10"
+spade = "2.6"
+spec_math = "0.1"
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "sampling"
+harness = false
+
+[[bench]]
+name = "image"
+harness = false
