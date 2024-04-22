@@ -4,6 +4,8 @@ Recreating the simulated image of the observed flux from the black hole's accret
 
 ![Observed flux from an inclination of 80 degrees](output/flux_80.png?raw=true)
 
+[Observed flux from 1 deg to 89 deg of inclination and back](https://github.com/nickjhughes/luminet_blackhole/assets/689543/96a1afa9-d8cd-475e-888c-0a8befe68db6)
+
 ## Running
 
 Run `cargo run --release -- --help` to see options.
