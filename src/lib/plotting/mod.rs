@@ -1,6 +1,8 @@
-pub use flux::{generate_flux_image, generate_flux_images_inclinations};
+pub use dither::{dither, DitherAlgorithm};
+pub use flux::{generate_flux_image, generate_flux_images_inclinations, Luma16Image};
 pub use isoradial::plot_isoradials;
 
-pub mod dither;
+mod dither;
 mod flux;
+mod gilbert;
 mod isoradial;

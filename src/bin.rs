@@ -107,6 +107,19 @@ enum Command {
         /// Output filename prefix.
         filename_prefix: String,
     },
+
+    /// Dither an image.
+    Dither {
+        /// The dither algorithm to use.
+        #[arg(short, long, default_value_t = luminet_blackhole_lib::plotting::DitherAlgorithm::BlueNoise)]
+        algorithm: luminet_blackhole_lib::plotting::DitherAlgorithm,
+
+        /// Input image path.
+        input_path: PathBuf,
+
+        /// Output image path.
+        output_path: PathBuf,
+    },
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -197,6 +210,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let path = directory.join(filename);
                 img.save(path)?;
             }
+        }
+        Command::Dither {
+            input_path,
+            output_path,
+            algorithm,
+        } => {
+            let dynamic_img = image::io::Reader::open(input_path)?.decode()?;
+            let mut img = dynamic_img.to_luma16();
+            luminet_blackhole_lib::plotting::dither(algorithm, &mut img);
+            img.save(&output_path)?;
         }
     }
 
