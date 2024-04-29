@@ -47,6 +47,7 @@ fn sgn(x: i32) -> i32 {
     }
 }
 
+#[allow(clippy::too_many_arguments)]
 fn gilbert_d2xy_r(
     dst_idx: i32,
     mut cur_idx: i32,
